@@ -19,4 +19,5 @@ namespace linkedlistofclasses{
 			Node* link;
 	};
 	typedef Node* NodePtr;
+
 }//linkedlistofclases
