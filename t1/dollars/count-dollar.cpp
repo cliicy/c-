@@ -5,6 +5,8 @@
 #include <vector>
 #include <assert.h>
 
+
+
 #include "..\t1\Node.h"
 #include "..\t1\stack.h"
 #include "..\t1\queue.h"
@@ -14,7 +16,6 @@
 #include "..\t1\common.h"
 
 
-using namespace std;
 using namespace linkedlistofclasses;
 using namespace stacksavitch;
 using namespace queuesavitch;
@@ -25,26 +26,40 @@ using namespace treetask;
 #define infile "infile.txt"
 #define outfile "outfile.txt"
 
+#define MIN(A,B) ((A>=B?return A:return B))
 
-template <class T>
-int getArrayLen(T& array)
-{
-	return (sizeof(array)/sizeof(array[0]));
-}
+void Test1();
+void GetMemory1(char* p);
+char* GetMemory2();
+void Test2();
+void GetMemory3(char**p, int num);
+void Test3();
+void swap(int* p1, int* p2);
+
+void Func_size(char str[100]);
+
+void LoopMove(char* pstr, int steps);
+void LoopMove2(char* pstr, int steps);
 
 
-void fstropen();
-void testcoutcin();
-void multiplyBigInt();
-void multiplyBigIntEx();
-void head_insert(NodePtr& head, int the_number);
+void check_crash_point();
 
-void demo_head_insert();
-void do_stack();
-void do_queue();
+void check_crash_point2();
 
-void do_vector();
-void do_vector2();
+void check_size();//测试指向字符数组的指针大小和指向字符的指针的大小
+
+
+struct S {
+	int i;
+	int * p;
+};
+
+
+struct {
+	char c;
+	char *pc;
+} Apc;
+
 
 int removeDuplicates(vector<int>& nums);
 vector<int> twoSum(vector<int>& nums, int target);
@@ -64,70 +79,34 @@ bool helper(string& a, int sa, int ea, string& b, int sb, int eb);
 
 void transit_money();
 int _strlen(const char *str);
-int vac = 3;
 
-int test(char var[])
+void fstropen();
+void testcoutcin();
+void multiplyBigInt();
+void multiplyBigIntEx();
+void head_insert(NodePtr& head, int the_number);
+
+void demo_head_insert();
+void do_stack();
+void do_queue();
+
+void do_vector();
+void do_vector2();
+
+void create_tree();
+//	int vac = 3;
+
+
+template <class T>
+int getArrayLen(T& array)
 {
-	int a = sizeof(char);
-	int b = sizeof(var);
-	return sizeof(var);
-};
-
-struct S {
-	int i;
-	int * p;
-};
-
-int max(int x, int y){
-	int z;
-
-	z = (x > y) ? x : y;
-
-	return z;
-}
-
-//int a , b, c;
-void change(int* a, int &b, int c)
-{
-		c = *a;
-		b = 3;
-		*a = 2;
-}
-
-struct {
-	char c;
-	char *pc;
-} a;
-
-void test1()
-{
-	char string[11];
-	char* str1 = "0123456789";
-	strcpy(string, str1);
-}
-
-void test2(){
-	char string[10], str1[10];
-	int i;
-	for (i = 0; i < 10; i++){
-		str1[i] = 'a';
-	}
-	strcpy(string, str1);
-}
-
-
-void test3(char* str1)
-{
-	char string[10];
-	if (strlen(str1) <= 10)
-	{
-		strcpy(string, str1);
-	}
-
+	return (sizeof(array) / sizeof(array[0]));
 }
 
 
 int main() {
+
+
 
 	//test1();
 	//test2();
@@ -138,49 +117,17 @@ int main() {
 
 	//return 0;
 
-	/*
-	
-	char *p = &a.c;
-	p[0] = 0;
-	p[1] = 0;
-	p[2] = 0;
-	p[3] = 0;
-	p[4] = 0;
-	p[5] = 0;
-	a.pc = p;
-	a.pc[5] = 0; 
-	a.pc[4] = 0;
-	a.pc[3] = 0;
-	a.pc[2] = 0;
-	a.pc[1] = 0;
-	a.pc[0] = 0;
+//	check_crash_point();
+//	return 0;
+
+	check_crash_point2();
 	return 0;
-	*/
-
-	/*
-	
-	S s;
-
-	int *p = &s.i;
-
-	p[0] = 4;
-
-	p[1] = 3;
-
-	s.p = p;
-
-	s.p[1] = 1;//执行完该句后s.p指向地址为1的地方，s.p[0]是地址1中存放的内容。所以不能输出s.p[1]， //同样也不能对s.p[]赋值
-
-	s.p[0] = 2;
-	return 0;
-	*/
 
 
 	//测试指向字符数组的指针大小和指向字符的指针的大小
 	/*
-	char str[] = "world", *pstr = "world";
-	printf("%d %d", sizeof(str), sizeof(pstr));
-	getchar();
+	check_size();
+		return 0;
 	return 0;
 	//测试指向字符数组的指针大小和指向字符的指针的大小
 	*/
@@ -352,45 +299,7 @@ int main() {
 	//测试指向数组的指针的内容
 
 	
-/*
 
-	Tree tree(16);//分配十六个节点
-//	Tree tree(3);//分配十六个节点
-
-	tree.addNode(0, 1);
-	tree.addNode(0, 2);	
-	tree.addNode(0, 3);
-	tree.addNode(0, 4);
-	tree.addNode(0, 5);
-	tree.addNode(0, 6);
-	tree.addNode(3, 7);
-	tree.addNode(4, 8);
-	tree.addNode(4, 9);
-	tree.addNode(5, 10);
-	tree.addNode(5, 11);
-	tree.addNode(5, 12);
-	tree.addNode(6, 13);
-	tree.addNode(9, 14);
-	tree.addNode(9, 15);
-
-	cout << "Tree1: " << endl;
-	tree.preOrder();
-	tree.print();
-
-	Tree tree2(9);
-	tree2.addNode(0, 1);
-	tree2.addNode(0, 2);
-	tree2.addNode(1, 3);
-	tree2.addNode(1, 4);
-	tree2.addNode(2, 5);
-	tree2.addNode(3, 6);
-	tree2.addNode(5, 7);
-	tree2.addNode(5, 8);
-
-	cout << "Tree2: " << endl;
-	tree2.preOrder();
-	tree2.print();
-*/
 
 	//int nret=_strlen("abcdefgt");
 
@@ -407,14 +316,94 @@ char* buffer = new char;
 memcpy(&waveFormat, buffer, sizeof(WAVEFORMAT));
 */
 
-string str="aaa";
-string astr = "bbb";
-str = astr;
+//string str="aaa";
+//string astr = "bbb";
+//str = astr;
 
 
 
     return 0;
 }
+
+
+
+void sort(string& s){
+	for (unsigned int i = 0; i < s.length(); i++){
+		for (unsigned int k = 1; k < s.length(); k++)
+		{
+			if (s[i]>s[k])
+			{
+				char c = s[i];
+				s[i] = s[k];
+				s[k] = c;
+			}
+		}
+	}
+}
+
+bool checkstr(string s1, string s2){
+	sort(s1);
+	sort(s2);
+	return (s1 == s2);
+}
+
+bool isScreamble(string s1, string s2){
+	if (s1 == "") return s2 == "";
+	if (checkstr(s1, s2) == false) return false;
+	int len = s1.length();
+	if (len == 1)return true;
+
+	for (unsigned int i = 1; i < s1.length(); i++){
+		string left = s1.substr(0, i);
+		string right = s1.substr(i);
+		if (isScreamble(left, s2.substr(i)) && isScreamble(right, s2.substr(i)) || \
+			isScreamble(left, s2.substr(len - i)) && isScreamble(right, s2.substr(len - i)))
+			return true;
+
+	}
+	return false;
+}
+
+void check_crash_point(){
+	char *p = &Apc.c;
+	p[0] = 0;
+	p[1] = 0;
+	p[2] = 0;
+	p[3] = 0;
+	p[4] = 0;
+	p[5] = 0;
+	Apc.pc = p;
+	Apc.pc[5] = 0;
+	Apc.pc[4] = 0;
+	Apc.pc[3] = 0;
+	Apc.pc[2] = 0;
+	Apc.pc[1] = 0;
+	Apc.pc[0] = 0;
+}
+
+void check_crash_point2(){
+	S s;
+
+	int *p = &s.i;
+
+	p[0] = 4;
+
+	p[1] = 3;
+
+	s.p = p;
+
+	s.p[1] = 1;//执行完该句后s.p指向地址为1的地方，s.p[0]是地址1中存放的内容。所以不能输出s.p[1]， //同样也不能对s.p[]赋值
+
+	s.p[0] = 2;
+
+}
+
+void check_size(){
+	char str[] = "world", *pstr = "world";
+	printf("%d %d", sizeof(str), sizeof(pstr));
+	getchar();
+}
+
 
 void LoopMove(char* pstr, int steps){
 	int n = strlen(pstr) - steps;
@@ -477,7 +466,7 @@ void Test2() {
 	printf(str);
 }
 
-void GetMemory3(char**p,int num) {
+void GetMemory3(char**p, int num) {
 	*p = (char*)malloc(num);
 	assert(*p != NULL);
 	/*
@@ -490,41 +479,41 @@ void GetMemory3(char**p,int num) {
 
 void Test3() {
 	char* str = NULL;
-	GetMemory3(&str,100);
+	GetMemory3(&str, 100);
 	strcpy(str, "hello");
 	printf(str);
 }
 
 void my_strcpy(char *strdest, const char *strsrc){
-	assert(strsrc != NULL && strdest !=NULL);
+	assert(strsrc != NULL && strdest != NULL);
 	while (*strsrc++ != '\0') {
 		*strdest++ = *strsrc++;
 	}
 }
 
-char * _tstrcpy(char *strdest, const char *strsrc) 
-{ 
+char * _tstrcpy(char *strdest, const char *strsrc)
+{
 	assert((strdest != NULL) && (strsrc != NULL));
-	char *address = strdest; 
-	while ((*strdest++ = *strsrc++) != '\0'); 
+	char *address = strdest;
+	while ((*strdest++ = *strsrc++) != '\0');
 	return address;
 }
 
 int _strlen(const char *str) //输入参数 const 试题 4：
 {
 	assert(str != NULL);
-	int len=0;
+	int len = 0;
 	while ((*str++) != '\0') {
 		len++;
 	}
 	return len;
 }
 
-void test() 
-{ 
+void test()
+{
 	char *str = new char;;
-	strcpy(str, "hello world"); 
-	printf(str); 
+	strcpy(str, "hello world");
+	printf(str);
 }
 
 bool isScramble1(string s1, string s2) {
@@ -543,19 +532,19 @@ bool helper(string& a, int sa, int ea, string& b, int sb, int eb) {
 	for (int i = sa; i <= ea; ++i){
 		char ta = a[i];
 		count[a[i]]++;
-	}	
+	}
 	for (int i = sb; i <= eb; ++i) {
 		char tb = b[i];
 		count[b[i]]--;
 	}
-		
+
 	for (int i = 0; i < 256; ++i) {
-		if (count[i] != 0) 
+		if (count[i] != 0)
 			return false;
 	}
-	
 
-	
+
+
 	for (int i = 0; i < len - 1; ++i) {
 		if ((helper(a, sa, sa + i, b, sb, sb + i) && helper(a, sa + i + 1, ea, b, sb + i + 1, eb)) ||
 			(helper(a, sa, sa + i, b, eb - i, eb) && helper(a, sa + i + 1, ea, b, sb, eb - i - 1))) {
@@ -609,14 +598,14 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
 
 	if (p == NULL || q == NULL) return (p == q);
 	return (p->element == q->element && isSameTree(p->left, q->left) && isSameTree(p->right, q->right));
-//	cout << p->val << endl;
+	//	cout << p->val << endl;
 
 	bool bsame = true;
 	while (p != NULL && q != NULL) {
 		if (p->element == q->element){
 			if (isSameTree(p->left, q->left)) {
-				isSameTree(p->right,q->right);
-			}		
+				isSameTree(p->right, q->right);
+			}
 			else
 				bsame = false;
 		}
@@ -676,7 +665,7 @@ ListNode* addEndTwoNumbers(ListNode* l1, ListNode* l2) {
 		ListNode* tNode = new ListNode(tval);
 		if (!pHead){
 			pHead = tNode;
-		    pTmpHead = pHead;
+			pTmpHead = pHead;
 		}
 		else {
 			pTmpHead->next = tNode;
@@ -703,21 +692,21 @@ ListNode* addxTwoNumbers(ListNode* l1, ListNode* l2) {
 	int carry = 0;
 	int tval = 0;
 	ListNode* pHead = NULL;// = new ListNode(0);
-	
+
 	while (l1 != NULL || l2 != NULL){
 		int x = (l1 != NULL) ? l1->val : 0;
 		int y = (l2 != NULL) ? l2->val : 0;
-		int sum = x + y+carry;
+		int sum = x + y + carry;
 		carry = sum / 10;
 		tval = sum % 10;
 
 		ListNode* tNode = new ListNode(tval);
 		tNode->next = pHead;
 		pHead = tNode;
-	
-		
-		if(l1!=NULL) l1 = l1->next;
-		if(l2!=NULL) l2 = l2->next;
+
+
+		if (l1 != NULL) l1 = l1->next;
+		if (l2 != NULL) l2 = l2->next;
 	}
 	if (carry>0)
 	{
@@ -730,7 +719,7 @@ ListNode* addxTwoNumbers(ListNode* l1, ListNode* l2) {
 }
 
 Node* addTwoNumbers(Node* n1, Node* n2){
-	Node* nHead = new Node(0,NULL);
+	Node* nHead = new Node(0, NULL);
 	int value = 0;
 	int carry = 0;
 	int tmpvalue = 0;
@@ -741,7 +730,7 @@ Node* addTwoNumbers(Node* n1, Node* n2){
 		int sum = carry + x + y;
 		carry = sum / 10;
 		head_insert(nHead, sum % 10);
-		
+
 		if (n1 != NULL) n1 = n1->getLink();
 		if (n2 != NULL) n2 = n2->getLink();
 	}
@@ -751,6 +740,62 @@ Node* addTwoNumbers(Node* n1, Node* n2){
 	}
 	return nHead;
 }
+
+
+int test(char var[])
+{
+	int a = sizeof(char);
+	int b = sizeof(var);
+	return sizeof(var);
+};
+
+
+
+int max(int x, int y){
+	int z;
+
+	z = (x > y) ? x : y;
+
+	return z;
+}
+
+//int a , b, c;
+void change(int* a, int &b, int c)
+{
+	c = *a;
+	b = 3;
+	*a = 2;
+}
+
+
+
+void test1()
+{
+	char string[11];
+	char* str1 = "0123456789";
+	strcpy(string, str1);
+}
+
+void test2(){
+	char string[10], str1[10];
+	int i;
+	for (i = 0; i < 10; i++){
+		str1[i] = 'a';
+	}
+	strcpy(string, str1);
+}
+
+
+void test3(char* str1)
+{
+	char string[10];
+	if (strlen(str1) <= 10)
+	{
+		strcpy(string, str1);
+	}
+
+}
+
 
 /**
 * Definition for singly-linked list.
@@ -763,391 +808,391 @@ Node* addTwoNumbers(Node* n1, Node* n2){
 
 
 /*
+Node* addTwoNumbers(Node* l1, Node* l2) {
+	
+	Node result = new Node();
+	Node* p = l1;
+	Node* q = l2;
 
-void Node* addTwoNumbers(Node* l1, Node* l2) {
-		Node result = new Node();
-		Node* p = l1;
-		Node* q = l2;
+	int sum = 0;
+	int tmpsum = 0;
+	int res = 0;
+	int carry = 0;
 
-		int sum = 0;
-		int tmpsum = 0;
-		int res = 0;
-		int carry = 0;
-
-		while (p->next){
-			while (q->next){
-				tmpsum = (p->val + q->val);
-				res = tmpsum % 10 + carry;
-				carry = tmpsum / 10;
-				p = p->next;
-				q = q->next;
-			}
+	while (p->next){
+		while (q->next){
+			tmpsum = (p->val + q->val);
+			res = tmpsum % 10 + carry;
+			carry = tmpsum / 10;
+			p = p->next;
+			q = q->next;
 		}
-
 	}
-};
+	
+	return NULL;
+}
+*/	
 
-*/
-
-vector<int> twoSum(vector<int>& nums, int target) {
-	vector<int> result;
-	for (unsigned int i = 0; i < nums.size(); i++)
-	{
-		for (unsigned int k = i + 1; k < nums.size(); k++)
-		{
-			if (nums[i] + nums[k] == target)
+		vector<int> twoSum(vector<int>& nums, int target) {
+			vector<int> result;
+			for (unsigned int i = 0; i < nums.size(); i++)
 			{
-				result.push_back(i);
-				result.push_back(k);
+				for (unsigned int k = i + 1; k < nums.size(); k++)
+				{
+					if (nums[i] + nums[k] == target)
+					{
+						result.push_back(i);
+						result.push_back(k);
+					}
+
+				}
+			}
+			return result;
+		}
+
+
+		int removeDuplicates(vector<int>& nums) {
+			vector<int>::iterator iter;
+			/*
+
+			for (iter = nums.begin(); iter < nums.end(); iter++)
+			{
+			cout << *iter << endl;
+
+			}
+			*/
+			for (unsigned int i = 0; i < nums.size(); i++){
+				int tmp = nums[i];
+				for (unsigned int k = i + 1; k < nums.size(); k++){
+					if (tmp == nums[k])
+					{
+						nums.erase(nums.begin() + k);
+						k--;
+					}
+				}
+			}
+			return nums.size();
+		}
+
+
+		void do_vector() {
+			vector<int> vt;
+			cout << "Enter a list of positive numbers.\n"
+				<< "Place a negative number number at the end.\n";
+
+			int next;
+			cin >> next;
+			while (next > 0) {
+				vt.push_back(next);
+				cout << next << " added. ";
+				cout << "vt.size() = " << vt.size() << endl;
+				cin >> next;
+			}
+
+
+			/*
+
+			for (int i = 0; i < 5; i++) {
+			vt.push_back(i);
+			}
+			*/
+			cout << "will pop the value one by one: ";
+			for (unsigned int j = 0; j < vt.size(); j++){
+				cout << vt[j] << " ";
 			}
 
 		}
-	}
-	return result;
-}
+
+		void do_vector2() {
+			vector<char> vt;
+			cout << "Enter a list of positive numbers.\n"
+				<< "Place a negative number number at the end.\n";
+
+			char next;
+			cin >> next;
+			while (next != '@') {
+				vt.push_back(next);
+				cout << next << " added. ";
+				cout << "vt.size() = " << vt.size() << endl;
+				cin >> next;
+			}
+
+			cout << "will pop the value one by one: ";
+			for (unsigned int j = 0; j < vt.size(); j++){
+				cout << vt[j] << " ";
+			}
+
+		}
 
 
-int removeDuplicates(vector<int>& nums) {
-	vector<int>::iterator iter;
-	/*
-	
-	for (iter = nums.begin(); iter < nums.end(); iter++)
-	{
-		cout << *iter << endl;
-		
-	}
-*/
-	for (unsigned int i = 0; i < nums.size(); i++){
-		int tmp = nums[i];
-		for (unsigned int k = i+1; k < nums.size(); k++){
-				if (tmp == nums[k])
-				{
-					nums.erase(nums.begin() + k);
-					k--;
+		void do_queue() {
+			Queue q;
+			char next, ans;
+			do {
+				cout << "Enter a word: ";
+				cin.get(next);
+				while (next != '\n'){
+					q.add(next);
+					cin.get(next);
 				}
+				cout << "you entered: ";
+				while (!q.empty())
+					cout << q.remove();
+				cout << endl;
+
+				cout << "Again?(Y/n): ";
+				cin >> ans;
+				cin.ignore(1000, '\n');
+			} while (ans != 'n' && ans != 'N');
 		}
-	}
-	return nums.size();
-}
 
 
-void do_vector() {
-	vector<int> vt;
-	cout << "Enter a list of positive numbers.\n"
-		<< "Place a negative number number at the end.\n";
+		void do_stack(){
+			Stack s;
+			char next, ans;
+			do {
+				cout << "enter a word: ";
+				cin.get(next);
+				while (next != '\n')
+				{
+					s.push(next);
+					cin.get(next);
+				}
+				cout << "Written backward that is: ";
+				while (!s.empty()) {
+					cout << s.pop();
+				}
+				cout << endl;
 
-	int next;
-	cin >> next;
-	while (next > 0) {
-		vt.push_back(next);
-		cout << next << " added. ";
-		cout << "vt.size() = " << vt.size() << endl;
-		cin >> next;
-	}
+				cout << "Again?(y/n): ";
+				cin >> ans;
+				cin.ignore(10000, '\n');
+			} while (ans != 'n' && ans != 'N');
 
-
-/*	
-	
-	for (int i = 0; i < 5; i++) {
-		vt.push_back(i);
-	}
-*/
-	cout << "will pop the value one by one: ";
-	for (unsigned int j = 0; j < vt.size(); j++){
-		cout << vt[j] << " ";
-	}
-
-}
-
-void do_vector2() {
-	vector<char> vt;
-	cout << "Enter a list of positive numbers.\n"
-		<< "Place a negative number number at the end.\n";
-
-	char next;
-	cin >> next;
-	while (next != '@') {
-		vt.push_back(next);
-		cout << next << " added. ";
-		cout << "vt.size() = " << vt.size() << endl;
-		cin >> next;
-	}
-
-	cout << "will pop the value one by one: ";
-	for (unsigned int j = 0; j < vt.size(); j++){
-		cout << vt[j] << " ";
-	}
-
-}
-
-
-void do_queue() {
-	Queue q;
-	char next, ans;
-	do {
-		cout << "Enter a word: ";
-		cin.get(next);
-		while (next != '\n'){
-			q.add(next);
-			cin.get(next);
 		}
-		cout << "you entered: ";
-		while (!q.empty())
-			cout << q.remove();
-		cout << endl;
-
-		cout << "Again?(Y/n): ";
-		cin >> ans;
-		cin.ignore(1000, '\n');
-	} while (ans != 'n' && ans != 'N' );
-}
 
 
-void do_stack(){
-	Stack s;
-	char next, ans;
-	do {
-		cout << "enter a word: ";
-		cin.get(next);
-		while (next != '\n')
-		{
-			s.push(next);
-			cin.get(next);
+		void head_insert(NodePtr& head, int the_number) {
+			NodePtr tempNode = new Node(the_number, head);
+			head = tempNode;
 		}
-		cout << "Written backward that is: ";
-		while ( !s.empty() ) {
-			cout << s.pop();
+
+		void demo_head_insert() {
+			NodePtr head, tmp;
+			head = new Node(0, NULL);
+			for (int i = 1; i < 5; i++){
+				head_insert(head, i);
+			}
+
+			//Iterate through the list and display each value
+			tmp = head;
+			while (tmp != NULL)
+			{
+				cout << tmp->getData() << endl;
+				tmp = tmp->getLink();
+			}
+
+			//Delete all nodes in the list before exiting
+			tmp = head;
+			while (tmp != NULL){
+				NodePtr nodeToDel = tmp;
+				tmp = tmp->getLink();
+				delete nodeToDel;
+			}
 		}
-		cout << endl;
 
-		cout << "Again?(y/n): ";
-		cin >> ans;
-		cin.ignore(10000, '\n');
-	} while (ans != 'n' && ans != 'N');
+		void testcoutcin() {
+			int n_25(0), n_10(0), n_5(0), n_total(0), cost_per_person(0);
+			cout << n_25 << " " << n_10 << " " << n_5 << " " << cost_per_person << endl;
+			cout << "Please input the number of 25 cents:\n";
+			cin >> n_25;
+			cout << "Please input the number of 10 cents:\n";
+			cin >> n_10;
+			cout << "Please input the number of 5 cents:\n";
+			cin >> n_5;
 
-}
+			n_total = n_25 * 25 + n_10 * 10 + n_5 * 5;
+			cout << "The total number of cents:";
+			cout << n_total;
 
+			cout << "\njust wait for moment and please input how many seconds to wait!\n";
 
-void head_insert(NodePtr& head, int the_number) {
-	NodePtr tempNode = new Node(the_number, head);
-	head = tempNode;
-}
+			cout << "Enter the cost per person: $";
+			cin >> cost_per_person;
 
-void demo_head_insert() {
-	NodePtr head, tmp;
-	head = new Node(0, NULL);
-	for (int i = 1; i < 5; i++){
-		head_insert(head, i);
-	}
+			cout << "Please input tab and return char:" << "\\t" << "\\n";
+		}
 
-	//Iterate through the list and display each value
-	tmp = head;
-	while (tmp != NULL)
-	{
-		cout << tmp->getData() << endl;
-		tmp = tmp->getLink();
-	}
+		void fstropen(){
+			ifstream in_stream;
+			string infiledir = common_dir;
 
-	//Delete all nodes in the list before exiting
-	tmp = head;
-	while (tmp != NULL){
-		NodePtr nodeToDel = tmp;
-		tmp = tmp->getLink();
-		delete nodeToDel;
-	}
-}
+			string in_file = infile;
+			string in_dir = common_dir + in_file;
+			in_stream.open(in_dir);
 
-void testcoutcin() {
-	int n_25(0), n_10(0), n_5(0), n_total(0), cost_per_person(0);
-	cout << n_25 << " " << n_10 << " " << n_5 << " " << cost_per_person << endl;
-	cout << "Please input the number of 25 cents:\n";
-	cin >> n_25;
-	cout << "Please input the number of 10 cents:\n";
-	cin >> n_10;
-	cout << "Please input the number of 5 cents:\n";
-	cin >> n_5;
+			ofstream out_stream;
+			string out_file = outfile;
+			out_stream.open(common_dir + out_file);
 
-	n_total = n_25 * 25 + n_10 * 10 + n_5 * 5;
-	cout << "The total number of cents:";
-	cout << n_total;
-
-	cout << "\njust wait for moment and please input how many seconds to wait!\n";
-
-	cout << "Enter the cost per person: $";
-	cin >> cost_per_person;
-
-	cout << "Please input tab and return char:" << "\\t" << "\\n";
-}
-
-void fstropen(){
-	ifstream in_stream;
-	string infiledir = common_dir;
-
-	string in_file = infile;
-	string in_dir = common_dir + in_file;
-	in_stream.open(in_dir);
-	
-	ofstream out_stream;
-	string out_file = outfile;
-	out_stream.open(common_dir + out_file);
-
-	int data1(0), data2(0), data3(0);
-	in_stream >> data1 >> data2 >> data3;
-	out_stream << data1 + data2 + data3;
-	in_stream.close();
-	out_stream.close();
+			int data1(0), data2(0), data3(0);
+			in_stream >> data1 >> data2 >> data3;
+			out_stream << data1 + data2 + data3;
+			in_stream.close();
+			out_stream.close();
 
 
-}
+		}
 
-void multiplyBigInt(){
-	float fInt1(0),fInt2(0);
-	cout << "Please input big Integer1:" << endl;
-	cin >> fInt1;
-	cout << "Please input big Integer2:" << endl;
-	cin >> fInt2;
-	cout << "The result is: " << fInt1*fInt2 << endl;
-	cout << "Please check.....";
-}
+		void multiplyBigInt(){
+			float fInt1(0), fInt2(0);
+			cout << "Please input big Integer1:" << endl;
+			cin >> fInt1;
+			cout << "Please input big Integer2:" << endl;
+			cin >> fInt2;
+			cout << "The result is: " << fInt1*fInt2 << endl;
+			cout << "Please check.....";
+		}
 
-//如何求2个大数的乘积
-void multiplyBigIntEx(){
-	//char num1[100];
-	//char num2[100];
+		//如何求2个大数的乘积
+		void multiplyBigIntEx(){
+			//char num1[100];
+			//char num2[100];
 
-	int num1[100];
-	int num2[100];
-	int tempRes[100] = { 0 };
-	cout << "Please input big Integer1:" << endl;
-	cin >> num1[0];
-	cout << "Please input big Integer2:" << endl;
-	cin >> num2[0];
-	int nlen1 = getArrayLen(num1);
-	int nlen2 = getArrayLen(num2);
-	int tempResLen = nlen1;
-	int ncarry = 0;
-	cout << "num1's length:" <<nlen1;
-	cout << "num2's length:" << nlen2;
-	/**
-	for (int p2 = nlen2 - 1; p2 >= 0; p2--) {
-		for (int p1 = nlen1 - 1; p1 >= 0;p1--) {
+			int num1[100];
+			int num2[100];
+			int tempRes[100] = { 0 };
+			cout << "Please input big Integer1:" << endl;
+			cin >> num1[0];
+			cout << "Please input big Integer2:" << endl;
+			cin >> num2[0];
+			int nlen1 = getArrayLen(num1);
+			int nlen2 = getArrayLen(num2);
+			int tempResLen = nlen1;
+			int ncarry = 0;
+			cout << "num1's length:" << nlen1;
+			cout << "num2's length:" << nlen2;
+			/**
+			for (int p2 = nlen2 - 1; p2 >= 0; p2--) {
+			for (int p1 = nlen1 - 1; p1 >= 0;p1--) {
 			int res = num1[p2] * num1[p1] + ncarry;
 			tempRes[tempResLen--] = res % 10;
 			ncarry = res / 10;
-		}
-		//tempRes[tempResLen] = Char(ncarry);
-		//tempResLen = nlen1;
-		//ncarry = 0;
-	}
-	**/
-	cout << "Please check.....";
-}
-
-//a b 2个对象的子对象以及继承关系
-
-
-
-//设计一个转账交易的小程序
-
-//对不知道大小的数组进行排序，如何找到最大的数
-
-
-
-
-string num2str(double i)
-
-{
-
-	stringstream ss;
-
-	ss << i;
-
-	return ss.str();
-
-}
-
-//字符串转数字：
-
-int str2num(string s)
-
-{
-
-	int num;
-
-	stringstream ss(s);
-
-	ss >> num;
-
-	return num;
-
-}
-
-void transit_money(){
-	char* custerm1ID = "luo";
-	char* custerm2ID = "juice";
-
-	string transSum;
-	cin >> transSum;
-
-	char chr;
-	cin >> chr;
-
-	char* pcha=new char;
-	cin >> pcha;
-
-
-	int ntrasSum;
-	cin >> ntrasSum;
-
-	char* balance1 = "80000";
-	int nbalance1 = 80000;
-
-
-
-	char* balance2 = "90000";
-	int nbalance2 = 90000;
-
-	//balance2 += transSum;
-
-	nbalance2 += ntrasSum;
-
-	cout << nbalance2 << endl;
-}
-
-
-/*
-String BigNumMultip(String bigNum1, String bigNum2){
-
-	if (bigNum1 == null || bigNum2 == null){
-		return "输入有误";
-	}
-	if (bigNum1 == "0" || bigNum2 == "0"){
-		return "0";
-	}
-
-	//将传进来的字符串参数转为字符数组并反转数组
-	char[] num1 = new StringBuffer(bigNum1).reverse().toString().toCharArray();
-	char[] num2 = new StringBuffer(bigNum2).reverse().toString().toCharArray();
-
-	for (int i = 0; i<num1.length; i++){
-	>'9'){
-		return "输入的数字不能含有非法字符";
-	}
-	}
-	for (int i = 0; i<num2.length; i++){
-	>'9'){
-		return "输入的数字不能含有非法字符";
-	}
-	}
-
-	int resultLen = num1.length + num2.length; //结果的长度
-	int[] result = new int[resultLen];
-
-	for (int j = 0; j<num1.length; j++){
-		i = "0;i<num2.length;i++){" int = "" resultstr = "new" stringbuffer = "" >= 0; i--){
-			resultStr.append(result[i]);
+			}
+			//tempRes[tempResLen] = Char(ncarry);
+			//tempResLen = nlen1;
+			//ncarry = 0;
+			}
+			**/
+			//cout << "Please check.....";
 		}
 
-		return resultStr.toString();
-	}< / num1.length; j++){>< / num2.length; i++){>< / num1.length; i++){>
-	*/
+		//a b 2个对象的子对象以及继承关系
+
+
+
+		//设计一个转账交易的小程序
+
+		//对不知道大小的数组进行排序，如何找到最大的数
+
+
+
+
+		string num2str(double i)
+
+		{
+
+			stringstream ss;
+
+			ss << i;
+
+			return ss.str();
+
+		}
+
+		//字符串转数字：
+
+		int str2num(string s)
+
+		{
+
+			int num;
+
+			stringstream ss(s);
+
+			ss >> num;
+
+			return num;
+
+		}
+
+		void transit_money(){
+			char* custerm1ID = "luo";
+			char* custerm2ID = "juice";
+
+				string transSum;
+			cin >> transSum;
+
+			char chr;
+				cin >> chr;
+
+			char* pcha = new char;
+					cin >> pcha;
+
+
+			int ntrasSum;
+					cin >> ntrasSum;
+
+			char* balance1 = "80000";
+			int nbalance1 = 80000;
+
+
+
+			char* balance2 = "90000";
+			int nbalance2 = 90000;
+
+			//balance2 += transSum;
+
+			nbalance2 += ntrasSum;
+
+			//cout << nbalance2 << endl;
+		}
+
+		void create_tree(){
+			Tree tree(16);//分配十六个节点
+			//	Tree tree(3);//分配十六个节点
+
+			tree.addNode(0, 1);
+			tree.addNode(0, 2);
+			tree.addNode(0, 3);
+			tree.addNode(0, 4);
+			tree.addNode(0, 5);
+			tree.addNode(0, 6);
+			tree.addNode(3, 7);
+			tree.addNode(4, 8);
+			tree.addNode(4, 9);
+			tree.addNode(5, 10);
+			tree.addNode(5, 11);
+			tree.addNode(5, 12);
+			tree.addNode(6, 13);
+			tree.addNode(9, 14);
+			tree.addNode(9, 15);
+
+			cout << "Tree1: " << endl;
+			tree.preOrder();
+			tree.print();
+
+			Tree tree2(9);
+			tree2.addNode(0, 1);
+			tree2.addNode(0, 2);
+			tree2.addNode(1, 3);
+			tree2.addNode(1, 4);
+			tree2.addNode(2, 5);
+			tree2.addNode(3, 6);
+			tree2.addNode(5, 7);
+			tree2.addNode(5, 8);
+
+			cout << "Tree2: " << endl;
+			tree2.preOrder();
+			tree2.print();
+		}
