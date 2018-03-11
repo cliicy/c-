@@ -12,10 +12,10 @@ namespace treetask {
 
 	void printSpace(int num) {
 		int i = 0;
-		for (i = 0; i < num - 3; i++)
+		for (i = 0; i < num - 2; i++)
 			cout << " ";
 
-		for (; i < num - 2; ++i)
+		for (; i < num - 1; ++i)
 			cout << "|";
 		for (; i < num; ++i)
 			cout << "_";
@@ -26,8 +26,8 @@ namespace treetask {
 		if (node != NULL){
 			printSpace(num);
 			cout << node->element << endl;
-			print(node->left, num + 4);
-			print(node->right, num);
+			print(node->firstChild, num + 4);
+			print(node->nextSibling, num);
 		}
 	}
 
@@ -43,8 +43,8 @@ namespace treetask {
 	{
 		if (parent != NULL){
 			cout << parent->element << " ";
-			preOrder(parent->left);
-			preOrder(parent->right);
+			preOrder(parent->firstChild);
+			preOrder(parent->nextSibling);
 		}
 	}
 
@@ -54,14 +54,27 @@ namespace treetask {
 		int charsize = sizeof(char);
 		int nodesize = sizeof(TreeNode);
 		root = new TreeNode[node_num];
+		int nroot = sizeof(root);
 
-		char ch = 'A';
+		memset(root, 0, nodesize*node_num);
 
+		char* chName[14] = {"Steven","YuanNing","Wei Xiaojin","Fan Zhihe","Cliicy","灰太狼","Ge Langtai","Jianjun","XiaoYu","Fengru",\
+							"Alex","Shuan","Ellen","Luo"};
+		string stmp = "";
 		for (int i = 0; i < node_num; ++i){
-			root[i].element = ch + i;
-			root[i].left = NULL;
-			root[i].right = NULL;
+			TreeNode node = root[i];
+			stmp = chName[i];
+			strcpy(root[i].element, stmp.c_str());
+			cout << root[i].element << " " << i << endl;
 		}
+
+		//char ch = 'A';
+
+		//for (int i = 0; i < node_num; ++i){
+		//	root[i].element = ch + i;
+		//	root[i].firstChild = NULL;
+		//	root[i].nextSibling = NULL;
+		//}
 
 	}
 
@@ -80,18 +93,18 @@ namespace treetask {
 		TreeNode* parent = &root[i];
 		TreeNode* node = &root[j];
 
-		if (parent->left == NULL)
-			parent->left = node;
+		if (parent->firstChild == NULL)
+			parent->firstChild = node;
 		else
-			addBrotherNode(parent->left, node);
+			addBrotherNode(parent->firstChild, node);
 	}
 
 	//将节点插入到兄弟节点
 	void Tree::addBrotherNode(TreeNode* bro, TreeNode* node)
 	{
-		if (bro->right == NULL)
-			bro->right = node;
+		if (bro->nextSibling == NULL)
+			bro->nextSibling = node;
 		else
-			addBrotherNode(bro->right, node);
+			addBrotherNode(bro->nextSibling, node);
 	}
 }

@@ -11,9 +11,9 @@
 namespace treetask {
 #define TYPE char
 struct TreeNode{
-	TYPE element;
-	TreeNode* left;// firstChild;
-	TreeNode* right;// nextSibling;
+	TYPE element[20];
+	TreeNode* firstChild;
+	TreeNode* nextSibling;
 };
 
 class Tree

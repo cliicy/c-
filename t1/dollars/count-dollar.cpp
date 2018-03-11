@@ -21,6 +21,8 @@ using namespace stacksavitch;
 using namespace queuesavitch;
 using namespace linkedNodeofclasses;
 using namespace treetask;
+using namespace EmployeeTreeFiled;
+using namespace solution;
 
 #define common_dir "..\\..\\common\\"
 #define infile "infile.txt"
@@ -96,6 +98,16 @@ void do_vector2();
 void create_tree();
 //	int vac = 3;
 
+struct teststr{
+	int aa;
+	char a[3];
+	teststr(){
+		int i = 0;
+	};
+	~teststr(){
+
+	};
+};
 
 template <class T>
 int getArrayLen(T& array)
@@ -106,7 +118,14 @@ int getArrayLen(T& array)
 
 int main() {
 
+	//teststr t1;
+	//return 0;
 
+	//PrintTest(0);
+	//return 0;
+
+	InitTree();
+	return 0;
 
 	//test1();
 	//test2();
@@ -444,45 +463,6 @@ void swap(int* p1, int* p2){
 	*p2 = p;
 }
 
-void GetMemory1(char* p){
-	p = (char*)malloc(100);
-}
-
-void Test1(){
-	char* str = NULL;
-	GetMemory1(str);
-	strcpy(str, "hello world");
-	printf(str);
-}
-
-char* GetMemory2() {
-	char p[] = "hello world";
-	return p;
-}
-
-void Test2() {
-	char* str = NULL;
-	str = GetMemory2();
-	printf(str);
-}
-
-void GetMemory3(char**p, int num) {
-	*p = (char*)malloc(num);
-	assert(*p != NULL);
-	/*
-	if (*p == NULL)
-	{
-
-	}
-	*/
-}
-
-void Test3() {
-	char* str = NULL;
-	GetMemory3(&str, 100);
-	strcpy(str, "hello");
-	printf(str);
-}
 
 void my_strcpy(char *strdest, const char *strsrc){
 	assert(strsrc != NULL && strdest != NULL);
@@ -597,14 +577,14 @@ bool isScramble(string s1, string s2)
 bool isSameTree(TreeNode* p, TreeNode* q) {
 
 	if (p == NULL || q == NULL) return (p == q);
-	return (p->element == q->element && isSameTree(p->left, q->left) && isSameTree(p->right, q->right));
+	return (p->element == q->element && isSameTree(p->firstChild, q->firstChild) && isSameTree(p->nextSibling, q->nextSibling));
 	//	cout << p->val << endl;
 
 	bool bsame = true;
 	while (p != NULL && q != NULL) {
 		if (p->element == q->element){
-			if (isSameTree(p->left, q->left)) {
-				isSameTree(p->right, q->right);
+			if (isSameTree(p->firstChild, q->firstChild)) {
+				isSameTree(p->nextSibling, q->nextSibling);
 			}
 			else
 				bsame = false;
@@ -1196,3 +1176,5 @@ Node* addTwoNumbers(Node* l1, Node* l2) {
 			tree2.preOrder();
 			tree2.print();
 		}
+
+		
