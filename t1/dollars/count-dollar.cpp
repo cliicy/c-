@@ -115,9 +115,93 @@ int getArrayLen(T& array)
 	return (sizeof(array) / sizeof(array[0]));
 }
 
+class A
+{
+public:
+	virtual void printSelf(){ cout << "A" << endl; }
+private:
+	int test;
+};
+class B : public A
+{
+public:
+	void printSelf(){ cout << "B" << endl; }
+	void printSelf2(){ cout << "B2" << endl; }
+private:
+	int test;
+};
+class C : public B
+{
+public:
+	void printSelf(){ cout << "C" << endl; }
+	void printSelf2(){ cout << "C2" << endl; }
+private:
+	int test;
+};
+
+//int nA; //定义全局变量
+
+void fn()
+
+{
+	static int nA=10; //定义静态局部变量
+	
+	cout << nA << endl;
+	nA++;
+
+}
+
+
+
 
 int main() {
 
+	fn();
+	return 0;
+
+	//fn();
+	//fn();
+	//fn();
+
+	/*extern int nA; 静态局部变量作用域消失了
+	cout << nA << endl*/;
+
+	return 0;
+
+	//test //
+	//A a;
+	//B b;
+	//C c;
+	//A *Ptr;
+	//B *PtrB;
+
+	////base class ptr  
+	//Ptr = &a;
+	//Ptr->printSelf();
+	//Ptr = &b;
+	//Ptr->printSelf();
+	//Ptr = &c;
+	//Ptr->printSelf();
+
+	//PtrB = &b;
+	//PtrB->printSelf();
+	//PtrB->printSelf2();
+	//PtrB = &c;
+	//PtrB->printSelf();
+	//PtrB->printSelf2();
+
+
+	//return 0;
+	//test //
+
+
+	InitEmployeeTree();
+	return 0;
+
+	int nSum = recur_sum(100);
+	cout << "1+2+3+....100= " << nSum << endl;
+	system("pause");
+	return 0;
 	//teststr t1;
 	//return 0;
 

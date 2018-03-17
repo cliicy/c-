@@ -9,8 +9,24 @@
 #include "..\t1\EmployeeTree.h"
 
 namespace solution{
+	//static int n; //定义静态全局变量
+//	extern int nA;
+//	void fn();
+	static void fnn();//声明静态函数
 
-#define MIN(A,B) ((A>=B?return A:return B))
+	void fnn()//定义静态函数
+
+	{
+
+		int n = 10;
+
+		cout << n << endl;
+
+	}
+
+	#define MIN(A,B) ((A>=B?return A:return B))
+	enum hasFile{ DOC=0, IMAGE };
+
 	void Test1();
 	void GetMemory1(char* p);
 	char* GetMemory2();
@@ -24,7 +40,12 @@ namespace solution{
 	void LoopMove(char* pstr, int steps);
 	void LoopMove2(char* pstr, int steps);
 	void InitTree();
+
+	void InitEmployeeTree();
+
 	void PrintTest(int nSpace);
+
+	int recur_sum(int nNumber);
 
 	typedef _Uint32t UIN16;
 

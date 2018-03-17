@@ -1,7 +1,10 @@
 #include "iostream"
 #include <assert.h>
+#include <cstddef>
 
 #include "..\t1\common.h"
+
+
 
 namespace solution{
 	using namespace std;
@@ -45,6 +48,36 @@ namespace solution{
 			return false;
 		}
 
+		void InitEmployeeTree(){
+			EmployeeTree tree(14);
+
+			tree.addChildNode(0, 1);
+			tree.addChildNode(0, 5);
+			tree.addChildNode(0, 10);
+			tree.addChildNode(1, 2);
+			tree.addChildNode(1, 3);
+			tree.addChildNode(1, 4);
+			tree.addChildNode(1, 7);
+			tree.addChildNode(5, 6);
+			tree.addChildNode(5, 8);
+			tree.addChildNode(5, 9);
+			tree.addChildNode(10, 11);
+			tree.addChildNode(10, 12);
+			tree.addChildNode(10, 13);
+
+			tree.print();
+			system("pause");
+
+			tree.print(DOC);
+			system("pause");
+
+			tree.print(IMAGE);
+			system("pause");
+
+			tree.resignation("xiaoyu01");
+				system("pause");
+		}
+
 		void InitTree(){
 			//分配14个节点 为14名员工建立存储空间
 			Tree tree(14);
@@ -71,6 +104,7 @@ namespace solution{
 
 			tree.print();
 			system("pause");
+
 		}
 
 
@@ -119,4 +153,26 @@ namespace solution{
 			etree.print_test(nSpace);
 			system("pause");
 		}
+
+		int recur_sum(int nNumber){
+			if (nNumber > 1){
+				return nNumber + recur_sum(nNumber - 1);
+			}
+				
+			else{
+				return nNumber;
+			}
+		}
+
+		//extern int nA;
+		//void fn()
+
+		//{
+
+		//	nA++;
+
+		//	cout << nA << endl;
+
+		//}
+
 }
