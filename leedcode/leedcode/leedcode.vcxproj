@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{391B3DD8-C49D-4F1F-B9AD-562D5348D601}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>leedcode</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="chain.cpp" />
+    <ClCompile Include="ClassTemplate.cpp" />
+    <ClCompile Include="Common.cpp" />
+    <ClCompile Include="Curr1.cpp" />
+    <ClCompile Include="Curr2.cpp" />
+    <ClCompile Include="Currency.cpp" />
+    <ClCompile Include="linerlist.cpp" />
+    <ClCompile Include="MyString.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="amaProCen.h" />
+    <ClInclude Include="Array1D.h" />
+    <ClInclude Include="Array2D.h" />
+    <ClInclude Include="binaryTree.h" />
+    <ClInclude Include="BISearchTreeLCA.h" />
+    <ClInclude Include="biTreeSearch.h" />
+    <ClInclude Include="BSTree.h" />
+    <ClInclude Include="calulateArrayValue.h" />
+    <ClInclude Include="chain.h" />
+    <ClInclude Include="ClassTemplate.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="commonTree.h" />
+    <ClInclude Include="Curr1.h" />
+    <ClInclude Include="Curr2.h" />
+    <ClInclude Include="Currency.h" />
+    <ClInclude Include="FreqNodeSum.h" />
+    <ClInclude Include="Huffma.h" />
+    <ClInclude Include="LCA.h" />
+    <ClInclude Include="linerlist.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="LinkedQueue.h" />
+    <ClInclude Include="ListNode.h" />
+    <ClInclude Include="MaxHeap.h" />
+    <ClInclude Include="multiChildTree.h" />
+    <ClInclude Include="MySingleton.h" />
+    <ClInclude Include="MyString.h" />
+    <ClInclude Include="SBITree2DoubleLinked.h" />
+    <ClInclude Include="stack.h" />
+    <ClInclude Include="stack_link.h" />
+    <ClInclude Include="BItreenode.h" />
+    <ClInclude Include="STLSamples.h" />
+    <ClInclude Include="TrinaryTreeLCA.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
