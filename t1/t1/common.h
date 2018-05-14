@@ -5,6 +5,8 @@
 #include "Node.h"
 #include "queue.h"
 #include "stack.h"
+#include <stdio.h>
+
 
 
 using namespace linkedlistofclasses;
@@ -25,7 +27,10 @@ namespace solution{
 #define infile "infile.txt"
 #define outfile "outfile.txt"
 
-#define MIN(A,B) ((A>=B?return A:return B))
+
+
+
+#define MIN(A,B) ((A)>=(B)?(return A):(return B))
 
 	Node* addTwoNumbers(Node* n1, Node* n2);
 	ListNode* addxTwoNumbers(ListNode* l1, ListNode* l2);
@@ -89,11 +94,9 @@ struct PTest{
 	char c;
 	char *pc;
 };
-
-
 	
 
-#define MIN(A,B) ((A>=B?return A:return B))
+#define MIN2(A,B) ((A)>=(B)?(A):(B))
 enum hasFile{ DOC=0, IMAGE };
 
 void Test1();
@@ -115,6 +118,10 @@ void InitEmployeeTree();
 void PrintTest(int nSpace);
 
 int recur_sum(int nNumber);
+
+void sort(string& s);
+bool isScreamble(string s1, string s2);
+bool checkstr(string s1, string s2);
 
 typedef _Uint32t UIN16;
 
@@ -154,6 +161,11 @@ int getArrayLen(T& array)
 	return (sizeof(array) / sizeof(array[0]));
 }
 
+
+//static pthread_t thread_a_id;
+
+void* printA(void* pA);
+void* changeA(void* pA);
 //	int removeDuplicates(vector<int>& nums);
 //	vector<int> twoSum(vector<int>& nums, int target);
 

@@ -13,7 +13,6 @@ namespace solution{
 	using namespace treetask;
 	using namespace EmployeeTreeFiled;
 
-
 		void sort(string& s){
 			for (unsigned int i = 0; i < s.length(); i++){
 				for (unsigned int k = 1; k < s.length(); k++)
@@ -77,6 +76,7 @@ namespace solution{
 			tree.print(IMAGE);
 			system("pause");
 
+//			tree.resignation("stev01");
 			tree.resignation("xiaoyu01");
 				system("pause");
 		}
@@ -1010,6 +1010,466 @@ namespace solution{
 		}
 
 
-	
+#define jingdu 0.000001
 
+		class Foo {
+		public:
+			Foo(int i = 0) { _i = i; }
+			void f() {
+				std::cout << "Foo::f()" << std::endl;
+			}
+		private:
+			int _i;
+		};
+
+
+		template<class T>
+		inline void Swap(T& a, T& b)
+		{
+			T temp = a;
+			a = b;
+			b = temp;
+		}
+
+
+		template<class T>
+		void Perm(T list[], int k, int m)
+		{
+
+			int i;
+			if (k == m){
+				for (i = 0; i <= m; i++)
+					cout << list[i];
+				cout << endl;
+			}
+			else{
+				for (i = k; i <= m; i++){
+					Swap(list[k], list[i]);
+					Perm(list, k + 1, m);
+					Swap(list[k], list[i]);
+				}
+			}
+		}
+
+
+		template <class T>
+		void Make2DArray(T ** &x, int rows, int cols)
+		{// 创建一个二维数组
+			// 不捕获异常
+			// 创建行指针
+			x = new T *[rows];
+			// 为每一行分配空间
+			for (int i = 0; i<rows; i++)
+				x[i] = new int[cols];
+		}
+
+
+		template <class T>
+		void Delete2DArray(T ** &x, int rows)
+		{// 删除二维数组x
+			// 释放为每一行所分配的空间
+			for (int i = 0; i < rows; i++)
+				delete[] x[i];
+			// 删除行指针
+			delete[] x;
+			x = 0;
+		}
+
+		template<class T>
+		T Abc(T& a, T& b, T& c)
+		{
+			return a + b + b*c + (a + b - c) / (a + b) + 4;
+		}
+
+/*
+		class A
+		{
+		public:
+			A()
+			{
+				cout << "A()" << endl;
+			}
+			void print()//virtual 
+			{
+				cout << "A:print()" << endl;
+			}
+			virtual ~A()
+			{
+				cout << "~A()" << endl;
+			}
+		};
+
+		
+		class B :public A
+		{
+		public:
+			B()
+			{
+				cout << "B()" << endl;
+			}
+			virtual void print()
+			{
+				cout << "B:print()" << endl;
+			}
+			virtual ~B()
+			{
+				cout << "~B()" << endl;
+			}
+		};
+		
+		int main() {
+			A* a = new B();
+			a->print();
+			delete a;
+		}
+		*/
 }
+
+
+/*	char aa[20] = {};
+HANDLE hFind = NULL;
+WIN32_FIND_DATA FindFileData;
+hFind = FindFirstFile("Debug\\t1.log", &FindFileData);
+if (hFind == INVALID_HANDLE_VALUE)
+{
+printf("FindFirstFile failed (%d)\n", GetLastError());
+return -1;
+}
+else
+{
+cout << hFind << "The first file found is " << FindFileData.cFileName << endl;
+FindClose(hFind);
+}
+
+return 0;
+
+
+
+int arr[] = { 1, 10, 0, 4, 5 };
+int n = sizeof(arr) / sizeof(arr[0]);
+sort(arr, arr + n, greater<int>());
+for (int i = 0; i < n; i++)
+cout << arr[i] << "";
+
+return 0;
+
+fn();
+return 0;
+*/
+//fn();
+//fn();
+//fn();
+
+/*extern int nA; 静态局部变量作用域消失了
+cout << nA << endl*/;
+
+//return 0;
+
+//test //
+//A a;
+//B b;
+//C c;
+//A *Ptr;
+//B *PtrB;
+
+////base class ptr  
+//Ptr = &a;
+//Ptr->printSelf();
+//Ptr = &b;
+//Ptr->printSelf();
+//Ptr = &c;
+//Ptr->printSelf();
+
+//PtrB = &b;
+//PtrB->printSelf();
+//PtrB->printSelf2();
+//PtrB = &c;
+//PtrB->printSelf();
+//PtrB->printSelf2();
+
+
+//return 0;
+//test //
+
+
+//InitEmployeeTree();
+//return 0;
+
+/*
+
+int nSum = recur_sum(100);
+cout << "1+2+3+....100= " << nSum << endl;
+system("pause");
+return 0;*/
+//teststr t1;
+//return 0;
+
+//PrintTest(0);
+//return 0;
+
+/*
+
+InitTree();
+return 0;
+*/
+//test1();
+//test2();
+//  test3("acdefghi89");
+
+//transit_money();
+
+
+//return 0;
+
+//	check_crash_point();
+//	return 0;
+
+/*
+
+check_crash_point2();
+return 0;
+*/
+
+//测试指向字符数组的指针大小和指向字符的指针的大小
+/*
+check_size();
+return 0;
+return 0;
+//测试指向字符数组的指针大小和指向字符的指针的大小
+*/
+
+//测试函数指针
+/*
+int(*p1) (int, int);
+int a, b, m;
+p1 = max;
+
+cin >> a >> b;
+m = p1(a, b);
+
+cout << "max = "<< m << endl;
+return 0;
+*/
+//测试函数指针
+
+//测试指向结构体的指针
+/*
+S s;
+int *p = &s.i;
+p[0] = 4;
+p[1] = 3;
+s.p = p;
+s.p[1] = 1;
+s.p[2] = 1;
+s.p[10] = 2;
+
+return 0;
+*/
+//测试指向结构体的指针
+
+//测试指针参数和参数的引用
+/*
+int a = 1, b = 2, c = 3;
+change(&a, b, c);
+cout << a << b << c;
+return 0;
+*/
+//测试指针参数和参数的引用
+
+
+//	testcoutcin();
+//	fstropen();
+//	multiplyBigInt();
+//	demo_head_insert();
+//	do_stack();
+//	do_queue();
+
+//	CExample A(100);
+//	CExample B = A;
+//	B.Show();
+
+//	CA A(10, "hello!");
+//	CA B = A;
+
+//	do_vector();
+
+//	do_vector2();
+
+/*
+//test del duplicate number in a vector
+vector<int> vt = { 1, 1, 2,2,3,4,4,5 };
+removeDuplicates(vt);
+//test del duplicate number in a vector
+*/
+
+//add two number in two different array relatively
+/*
+
+vector<int> vt = { 1, 2, 3, 4, 5, 6, 7, 8 };
+int target = 9;
+
+vector<int> vr;
+vr = twoSum(vt, target);
+*/
+//add two number in two different array relatively
+
+//add two numbers in the two linked 
+/*
+
+
+Node* node1 = new Node(2,NULL);
+head_insert(node1, 4);
+head_insert(node1, 3);
+
+Node* node2 = new Node(5, NULL);
+head_insert(node2, 6);
+head_insert(node2, 4);
+
+Node* nResult= addTwoNumbers(node1, node2);
+*/
+//add two numbers in the two linked 
+/*test case 1 start */
+//	test1_addtwolink();
+/*test case 1 end */
+
+/* test case2 start*/
+//	test2_addtwolink();
+/* test case2 end*/
+
+//is the same tree?
+/*
+TreeNode* p = new TreeNode(1);
+TreeNode* pleft = new TreeNode(2);
+TreeNode* pright = new TreeNode(3);
+p->left = pleft;
+p->right = pright;
+
+TreeNode* q = new TreeNode(1);
+TreeNode* qleft = new TreeNode(2);
+TreeNode* qright = new TreeNode(3);
+q->left = qleft;
+q->right = qright;
+bool bresult = isSameTree(p, q);
+cout << "Is the same tree: " << bresult<< endl;
+*/
+//is the same tree?
+
+/*
+
+string str1 = "ef";
+string str2 = "fe";
+isScramble1(str1, str2);
+
+
+*/
+//测试传递字符数组时类型的size
+//在C语言中，数组作为参数，进行传递时，传递的是指针 ，换句话说，字符数组作为参数，
+//进行传递时，传递的是字符数组的起始地址，相当于一个字符指针
+/*
+char var[] = { 0 };
+int b = sizeof(var);
+int ret=test(var);
+return 0;
+*/
+//测试传递字符数组时类型的size
+
+
+//测试类型的size
+/*
+int** a1[3][4];
+int nsize = sizeof(a1);
+
+char** a2[3][4];
+int ncsize = sizeof(a2);
+
+return 0;
+*/
+//测试类型的size
+
+//测试指向数组的指针的内容
+/*
+int m = 3;
+int arr[] = { 6, 7, 8, 9, 10 };
+int na = sizeof(arr);
+int ni = sizeof(int);
+int sizeay = na / ni;
+int  *ptr = arr;
+int ntmp = *ptr;
+(*ptr++) += 123;
+ntmp = *ptr;
+//int ntmp2 = ++ptr;
+printf("%s.%s\n", "a", "b");
+printf("%d.%d\n", *ptr, *(++ptr));
+return 0;
+//*/
+//测试指向数组的指针的内容
+
+
+
+
+//int nret=_strlen("abcdefgt");
+
+//Test1
+//Test2();
+//	Test3();
+
+//LoopMove("abcdefghi", 2);
+//LoopMove2("abcdefghi", 2);
+
+/*
+WAVEFORMAT waveFormat;
+char* buffer = new char;
+memcpy(&waveFormat, buffer, sizeof(WAVEFORMAT));
+*/
+
+//string str="aaa";
+//string astr = "bbb";
+//str = astr;
+
+
+/*
+	
+	int** x;
+	int r = 2;
+	int c = 5;
+
+	try { Make2DArray(x, r, c); }
+	catch (exception) {
+		cerr << "Could bot create x" << endl;
+		exit(1);
+	}
+*/
+//	char cc[] = { 'a', 'b', 'c', 'd', 'e' };
+//	int len = sizeof(cc) / sizeof(cc[0]);
+//	Perm(cc, len, len);
+
+//	Perm(cc, len, len/2);
+
+	/*
+	
+	char(*c)[5];
+	c = new char[2][5];
+	cout << "aaa" << endl;
+	for (int i = 0; i < 2; i++){
+		for (int j = 0; j < 5; j++){
+			c[i][j] = i + j;
+		}
+	}
+
+	//	Foo *p = 0;
+	//	p->f();
+	//cout << "aaaa" << endl;
+	//	string str("Test string");
+	//	for (string::iterator it = str.begin(); it != str.end(); ++it)
+	//		std::cout << *it;
+	//	std::cout << '\n';
+
+	//	浮点型不能直接比较是否等于0，需要设置相应的精度，在精度允许范围内都可以认为是0
+	//		代码：
+
+	//	double d = 0.00000001;
+	//	if (d - 0.0  < jingdu && d - 0.0 > -jingdu)
+	//		printf("d = 0");
+
+
+*/

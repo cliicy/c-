@@ -158,30 +158,43 @@ namespace EmployeeTreeFiled {
 	
 
 	void EmployeeTree::resignation(const char* pmfkey){
-		childresign(root, pmfkey);
+		assert(root);
+	
+		string sRootkey(root[0].pmfkey);
+		if (sRootkey.compare(pmfkey) == 0){
+			cout << "Ignore we need keep the root node" << endl;
+		}
+		else{
+			childresign(root, pmfkey);
+		}
+
+		
 	}
 
-	void EmployeeTree::childresign(const EmployeeNode* pNode,const char pmfkey[]){
-		if (pNode == NULL) return;
+
+int EmployeeTree::childresign(EmployeeNode* pNode, const char pmfkey[]){
+	
+	if (pNode != NULL){
 		//printSpace(nSpace);
 		string sNodekey = pNode->pmfkey;
 		string sResign = pmfkey;
 
-		while (!sNodekey.compare(pmfkey)){
-			if (!pNode->firstChild && !pNode->nextSibling){
-
-				delete pNode;
-				pNode = NULL;
-			}
-
+		if (sNodekey.compare(pmfkey) != 0){
+			cout << pNode->chName << " " << pNode->pmfkey << endl;
 			childresign(pNode->firstChild, pmfkey);
 			childresign(pNode->nextSibling, pmfkey);
 		}
-
-		cout << pNode->chName << " " << pNode->pmfkey << "  (" << pNode->chFiles[0] << " " << pNode->chFiles[1] << " " << pNode->chFiles[0] << ")" << endl;
+		else if (sNodekey.compare(pmfkey) == 0){
+			cout << pmfkey << " already quit" << endl;
+			strcat(pNode->chName, " vacancy");
+			cout << pNode->chName << endl;
+			pNode->bResigned = true;
+			return 1;
+		}
 		
-	
 	}
+	return 0;
+}
 
 	void EmployeeTree::promote(const char pmfkey){
 
@@ -213,6 +226,11 @@ namespace EmployeeTreeFiled {
 			i++;
 		} while (true);*/
 
+	}
+
+	static void Visit(EmployeeTree* pNode)
+	{
+		cout << "data" << endl;
 	}
 }
 

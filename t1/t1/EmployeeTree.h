@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -15,8 +16,10 @@ namespace EmployeeTreeFiled {
 			TYPE* chFiles[3];
 			TYPE chName[20];
 			TYPE pmfkey[10];
+			vector<string> vFile;
 			treenode* firstChild;
 			treenode* nextSibling;
+			bool bResigned;
 		} EmployeeNode;
 
 	public:
@@ -34,12 +37,12 @@ namespace EmployeeTreeFiled {
 		void printEmployees(const EmployeeNode* pNode,int nSpace);
 		
 		void print(int nFileType);
-		void childresign(const EmployeeNode* pNode, const char pmfkey[]);
+		int childresign(EmployeeNode* pNode, const char pmfkey[]);
 
 		void printEmployee(const EmployeeNode* pNode, int nFileType, int nSpace);
 		void printSpace(int nSpace);
 		void resignation(const char* pmfkey);
-		
+		void PreOrder(EmployeeNode* pNode, const char pmfkey[]);
 		void promote(const char pmfkey);
 
 		void print_test(int nSpace);
